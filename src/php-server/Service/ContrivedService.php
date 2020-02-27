@@ -22,7 +22,8 @@ class ContrivedService implements ContrivedServiceInterface
     public function ContrivedMethod(GRPC\ContextInterface $ctx, ContrivedMessageRequest $in): ContrivedMessageResponse
     {
         $response = new ContrivedMessageResponse();
-        $response->setBody("Hello");
+        $body = $in->getBody();
+        $response->setBody("PHP Service has recieved ". $body);
         return $response;
     }
 }
